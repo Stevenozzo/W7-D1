@@ -32,7 +32,7 @@ class Pet {
   }
 }
 
-const pets = {};
+const pets = []; // Array per memorizzare gli oggetti Pet
 
 document.getElementById("petForm").addEventListener("submit", function (event) {
   event.preventDefault();
@@ -42,10 +42,11 @@ document.getElementById("petForm").addEventListener("submit", function (event) {
   const breed = document.getElementById("breed").value;
 
   const pet = new Pet(petName, ownerName, species, breed);
-  pets[petName] = pet;
+  pets.push(pet); // Aggiungi il pet all'array
 
   alert(`Pet salvato: ${petName}`);
 
+  // Resetta il form
   document.getElementById("petForm").reset();
 });
 
@@ -56,8 +57,8 @@ document
     const pet1Name = document.getElementById("pet1Name").value;
     const pet2Name = document.getElementById("pet2Name").value;
 
-    const pet1 = pets[pet1Name];
-    const pet2 = pets[pet2Name];
+    const pet1 = pets.find((p) => p.petName === pet1Name);
+    const pet2 = pets.find((p) => p.petName === pet2Name);
 
     if (pet1 && pet2) {
       const areSameOwner = pet1.sharesOwner(pet2);
@@ -69,5 +70,6 @@ document
         "Devi prima creare entrambi gli animali.";
     }
 
+    // Resetta il form di confronto
     document.getElementById("compareForm").reset();
   });
