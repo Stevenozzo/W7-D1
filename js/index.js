@@ -42,11 +42,10 @@ document.getElementById("petForm").addEventListener("submit", function (event) {
   const breed = document.getElementById("breed").value;
 
   const pet = new Pet(petName, ownerName, species, breed);
-  pets[petName] = pet; // Salva il pet usando il nome come chiave
+  pets[petName] = pet;
 
   alert(`Pet salvato: ${petName}`);
 
-  // Resetta il form
   document.getElementById("petForm").reset();
 });
 
@@ -70,6 +69,5 @@ document
         "Devi prima creare entrambi gli animali.";
     }
 
-    // Resetta il form di confronto
     document.getElementById("compareForm").reset();
   });
