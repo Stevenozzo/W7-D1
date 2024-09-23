@@ -32,7 +32,7 @@ class Pet {
   }
 }
 
-let pet1, pet2;
+const pets = {};
 
 document.getElementById("petForm").addEventListener("submit", function (event) {
   event.preventDefault();
@@ -41,15 +41,10 @@ document.getElementById("petForm").addEventListener("submit", function (event) {
   const species = document.getElementById("species").value;
   const breed = document.getElementById("breed").value;
 
-  if (!pet1) {
-    pet1 = new Pet(petName, ownerName, species, breed);
-    alert(`Primo pet salvato: ${petName}`);
-  } else if (!pet2) {
-    pet2 = new Pet(petName, ownerName, species, breed);
-    alert(`Secondo pet salvato: ${petName}`);
-  } else {
-    alert("Hai già salvato due pets.");
-  }
+  const pet = new Pet(petName, ownerName, species, breed);
+  pets[petName] = pet; // Salva il pet usando il nome come chiave
+
+  alert(`Pet salvato: ${petName}`);
 
   // Resetta il form
   document.getElementById("petForm").reset();
@@ -62,6 +57,9 @@ document
     const pet1Name = document.getElementById("pet1Name").value;
     const pet2Name = document.getElementById("pet2Name").value;
 
+    const pet1 = pets[pet1Name];
+    const pet2 = pets[pet2Name];
+
     if (pet1 && pet2) {
       const areSameOwner = pet1.sharesOwner(pet2);
       document.getElementById(
@@ -69,7 +67,7 @@ document
       ).innerText = `${pet1Name} e ${pet2Name} condividono lo stesso padrone? ${areSameOwner}`;
     } else {
       document.getElementById("result").innerText =
-        "Devi prima creare due pets.";
+        "Devi prima creare entrambi gli animali.";
     }
 
     // Resetta il form di confronto
