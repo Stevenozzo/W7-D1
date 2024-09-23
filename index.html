@@ -6,7 +6,34 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>ESERCIZI JS</h1>
+    <form id="petForm">
+      <label for="petName">Nome dell'animale:</label>
+      <input type="text" id="petName" required />
+      <br />
+      <label for="ownerName">Nome del padrone:</label>
+      <input type="text" id="ownerName" required />
+      <br />
+      <label for="species">Specie:</label>
+      <input type="text" id="species" required />
+      <br />
+      <label for="breed">Razza:</label>
+      <input type="text" id="breed" required />
+      <br />
+      <button type="submit">Salva Pet</button>
+    </form>
+
+    <h2>Confronta Pet</h2>
+    <form id="compareForm">
+      <label for="pet1Owner">Nome del padrone del primo animale:</label>
+      <input type="text" id="pet1Owner" required />
+      <br />
+      <label for="pet2Owner">Nome del padrone del secondo animale:</label>
+      <input type="text" id="pet2Owner" required />
+      <br />
+      <button type="submit">Confronta</button>
+    </form>
+
+    <div id="result"></div>
     <script src="./js/index.js"></script>
   </body>
 </html>
