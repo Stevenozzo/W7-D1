@@ -51,6 +51,7 @@ document.getElementById("petForm").addEventListener("submit", function (event) {
     alert("Hai già salvato due pets.");
   }
 
+  // Resetta il form
   document.getElementById("petForm").reset();
 });
 
@@ -58,18 +59,19 @@ document
   .getElementById("compareForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
-    const owner1 = document.getElementById("pet1Owner").value;
-    const owner2 = document.getElementById("pet2Owner").value;
+    const pet1Name = document.getElementById("pet1Name").value;
+    const pet2Name = document.getElementById("pet2Name").value;
 
     if (pet1 && pet2) {
       const areSameOwner = pet1.sharesOwner(pet2);
       document.getElementById(
         "result"
-      ).innerText = `${pet1.petName} e ${pet2.petName} condividono lo stesso padrone? ${areSameOwner}`;
+      ).innerText = `${pet1Name} e ${pet2Name} condividono lo stesso padrone? ${areSameOwner}`;
     } else {
       document.getElementById("result").innerText =
         "Devi prima creare due pets.";
     }
 
+    // Resetta il form di confronto
     document.getElementById("compareForm").reset();
   });
